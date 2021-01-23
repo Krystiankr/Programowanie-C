@@ -1,0 +1,80 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <cstdio>
+// Autor Krystian Kręcik WARIANT 19.
+using namespace std;
+int main() {
+ 
+    printf("Zadanie 1\n");
+    printf("Prosze podac wspolczynnik rownania kwadratowego w kolejnosci a, b, c\n");
+    int a, b, c;
+    scanf("%d %d %d", &a, &b, &c);
+    if (a != 0) {
+        float delta = (b * b) - (4 * a * c);
+        if ((delta) < 0) {
+            printf("Delta ujemna brak rozwiazan");
+        }
+        else if (delta == 0) { printf("%f", -b / (2. * a)); }
+        else { printf("%lf", (-b - sqrt(delta)) / (2. * a)); printf(" %lf", (-b + sqrt(delta)) / (2. * a)); }
+    }
+    else {
+        if (b == 0) {
+            if (c == 0) {
+                printf("Nieskonczenie wiele");
+            }
+            else printf("Brak rozwiazan1");
+        }
+        else {
+            printf("%lf", (-c) / b);
+        }
+    }
+   
+    printf("Zadanie 2\n");
+    printf("Prosze podac dwie liczby calkowite\n");
+    int a, b, temp;
+    scanf("%d %d", &a, &b);
+    printf("Wartosc pierwszej zmiennej wynosi: %d, drugiej: %d\n", a, b);
+    printf("Nastepnuje zmiana wartosci zmiennych...\n");
+    temp = a;
+    a = b;
+    b = temp;
+    printf("Po zmianie wartosc pierwszej zmiennej wynosi: %d, drugiej: %d", a, b);
+   
+    printf("Zadanie 3\n");
+    int tab[10];
+    int min=99999, index=0,ilosc=0, test=0;
+
+
+    for (int i = 0; i < 9; i++){
+        scanf("%d", &tab[i]);
+        if (tab[i] < min) {
+            min = tab[i];
+            index = i;
+        }
+        else if (min == tab[i]) test = 1;
+    }
+    for (int i = 0; i < 10; i++)
+        printf("%d ", tab[i]);
+    if (test) {
+        printf("\nIndex najmniejszej liczby wynosi: %d\n", index);
+    }
+    else {
+        printf("\nNajmniejsza liczba to: %d o indexie: %d", min, index);
+    }
+ 
+    printf("Zadanie 4\n");
+    int tab[100];
+    int licznik = 0, suma=0, liczba;
+    while (scanf("%d", &liczba)) {
+        if (liczba == 0) {
+          
+            printf("koniec");
+            break;
+        }
+        suma += liczba;
+        licznik++;
+    }
+    printf("\nSrednia arytmetyczna liczb wynosi %d", suma/licznik);
+}
